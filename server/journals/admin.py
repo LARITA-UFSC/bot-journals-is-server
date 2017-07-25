@@ -16,7 +16,7 @@ class DocumentsAdmin(admin.ModelAdmin):
         extra_context = extra_context or {}
         extra_context['show_save_and_continue'] = False
         extra_context['show_save'] = False
-        return super(YourModelAdmin, self).changeform_view(request, object_id extra_context=extra_context)
+        return super(DocumentsAdmin, self).changeform_view(request, object_id, extra_context=extra_context)
 
 
 @admin.register(Rawdata)
