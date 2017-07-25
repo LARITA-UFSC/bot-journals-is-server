@@ -15,6 +15,7 @@ class CustomPropertiesMixinAdmin():
 class DocumentsAdmin(admin.ModelAdmin, CustomPropertiesMixinAdmin):
     list_filter = ['journal']
     search_fields = ['title', 'keywords', 'summary']
+    actions = None
 
 
 @admin.register(Rawdata)
