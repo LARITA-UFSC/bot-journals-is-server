@@ -18,5 +18,5 @@ class DocumentsAdmin(CustomPropertiesMixinAdmin, admin.ModelAdmin):
 
 
 @admin.register(Rawdata)
-class RawdataAdmin(CustomPropertiesMixinAdmin, admin.ModelAdmin):
+class RawdataAdmin(admin.ModelAdmin):
     pass
