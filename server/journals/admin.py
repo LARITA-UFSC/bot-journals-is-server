@@ -9,10 +9,10 @@ class DocumentsAdmin(admin.ModelAdmin):
     readonly_fields = ['title', 'authors', 'keywords',
                        'summary', 'url_view', 'url_pdf', 'journal']
 
+    def has_delete_permission(self, request, obj=None):
+        return False
+
 
 @admin.register(Rawdata)
 class RawdataAdmin(admin.ModelAdmin):
     pass
-
-
-admin.site.disable_action('delete_selected')
