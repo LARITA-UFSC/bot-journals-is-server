@@ -11,12 +11,12 @@ class CustomPropertiesMixinAdmin():
         return self.readonly_fields
 
 
-@admin.register(Documents, CustomPropertiesMixinAdmin)
+@admin.register(CustomPropertiesMixinAdmin, Documents)
 class DocumentsAdmin(admin.ModelAdmin, CustomPropertiesMixinAdmin):
     list_filter = ['journal']
     search_fields = ['title', 'keywords', 'summary']
 
 
-@admin.register(Rawdata, CustomPropertiesMixinAdmin)
+@admin.register(CustomPropertiesMixinAdmin, Rawdata)
 class RawdataAdmin(admin.ModelAdmin, CustomPropertiesMixinAdmin):
     pass
