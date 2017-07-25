@@ -3,7 +3,7 @@ from .models import Documents, Rawdata
 
 
 @admin.register(Documents)
-class DocumentsAdmin(admin.ModelAdmin, CustomPropertiesMixinAdmin):
+class DocumentsAdmin(admin.ModelAdmin):
     list_filter = ['journal']
     search_fields = ['title', 'keywords', 'summary']
     readonly_fields = ['title', 'authors', 'keywords',
@@ -11,5 +11,5 @@ class DocumentsAdmin(admin.ModelAdmin, CustomPropertiesMixinAdmin):
 
 
 @admin.register(Rawdata)
-class RawdataAdmin(admin.ModelAdmin, CustomPropertiesMixinAdmin):
+class RawdataAdmin(admin.ModelAdmin):
     pass
