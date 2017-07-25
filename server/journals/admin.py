@@ -15,7 +15,8 @@ class DocumentsAdmin(admin.ModelAdmin):
     def changeform_view(self, request, object_id=None, form_url='', extra_context=None):
         extra_context = extra_context or {}
         extra_context['show_save_and_continue'] = False
-        extra_context['show_save_and_add_another'] = False
+        # extra_context['show_save_and_add_another'] = False
+        extra_context['really_hide_save_and_add_another_damnit'] = True
         extra_context['show_save'] = False
         return super(DocumentsAdmin, self).changeform_view(request, object_id, extra_context=extra_context)
 
