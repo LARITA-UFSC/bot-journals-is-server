@@ -13,3 +13,6 @@ class DocumentsAdmin(admin.ModelAdmin):
 @admin.register(Rawdata)
 class RawdataAdmin(admin.ModelAdmin):
     pass
+
+
+admin.site.disable_action('delete_selected')
