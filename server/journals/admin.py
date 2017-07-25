@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Documents, Rawdata
 
 
-@admin.register(CustomPropertiesMixinAdmin, Documents)
+@admin.register(Documents)
 class DocumentsAdmin(admin.ModelAdmin, CustomPropertiesMixinAdmin):
     list_filter = ['journal']
     search_fields = ['title', 'keywords', 'summary']
@@ -10,6 +10,6 @@ class DocumentsAdmin(admin.ModelAdmin, CustomPropertiesMixinAdmin):
                        'summary', 'url_view', 'url_pdf', 'journal']
 
 
-@admin.register(CustomPropertiesMixinAdmin, Rawdata)
+@admin.register(Rawdata)
 class RawdataAdmin(admin.ModelAdmin, CustomPropertiesMixinAdmin):
     pass
