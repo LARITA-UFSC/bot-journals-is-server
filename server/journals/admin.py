@@ -13,7 +13,7 @@ class CustomPropertiesMixinAdmin():
 
 @admin.register(Documents)
 class DocumentsAdmin(admin.ModelAdmin, CustomPropertiesMixinAdmin):
-    list_filter = ('journal')
+    list_filter = ['journal']
     search_fields = ['title', 'keywords', 'summary']
 
 
