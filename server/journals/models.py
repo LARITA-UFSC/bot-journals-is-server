@@ -16,12 +16,16 @@ class Documents(models.Model):
     INFORMACAO_E_SOCIEDADE = 1
     TRANSINFORMACAO = 2
     PERSPECTIVAS_EM_CIENCIAS_DA_INFORMACAO = 3
+    INFORMACAO_E_INFORMACAO = 4
+    EM_QUESTAO = 5
     
     JOURNALS_CHOICES = (
         (DEFAULT, 'Não Informado'),
         (INFORMACAO_E_SOCIEDADE, 'Informação & Sociedade'),
         (TRANSINFORMACAO, 'Transinformação'),
         (PERSPECTIVAS_EM_CIENCIAS_DA_INFORMACAO, 'Perspectivas em Ciência da Informação'),
+        (INFORMACAO_E_INFORMACAO, 'Informação & Informação'),
+        (EM_QUESTAO, 'Em Questão'),
     )
 
     title = models.CharField(max_length=2000, blank=True, null=True)
