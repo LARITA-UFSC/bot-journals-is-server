@@ -42,4 +42,5 @@ router.register(r'documents', DocumentsViewSet)
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
+    url(r'^explorer/', include('explorer.urls')),
 ]

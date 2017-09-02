@@ -23,7 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'f-!_b5p4etg(^pl&7^$ql00pw&ef!d1)g%%z#uuy!_ay2k-m74'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', True) 
+
+print(DEBUG)
 
 ALLOWED_HOSTS = ['*']
 
@@ -41,6 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'corsheaders',
+    'explorer',
+
     'journals',
 ]
 

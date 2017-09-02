@@ -35,6 +35,8 @@ class Documents(models.Model):
     url_view = models.CharField(max_length=2000, blank=True, null=True)
     url_pdf = models.CharField(max_length=2000, blank=True, null=True)
     
+    trash = models.BooleanField(default=False)
+
     journal = models.PositiveSmallIntegerField(
         choices=JOURNALS_CHOICES,
         default=DEFAULT,
