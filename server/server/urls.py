@@ -19,6 +19,9 @@ from journals.models import Documents
 from rest_framework import routers, serializers, viewsets
 from django_filters import FilterSet
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+
 class DocumentsFilter(FilterSet):
     class Meta:
         model = Documents
@@ -44,3 +47,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^explorer/', include('explorer.urls')),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

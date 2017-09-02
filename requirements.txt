@@ -6,3 +6,4 @@ django_cors_headers==2.1.0
 django-filter==1.0.4
 djangorestframework==3.6.4
 django-sql-explorer==1.1.1
+whitenoise==3.3.0
