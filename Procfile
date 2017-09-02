@@ -1,1 +1,1 @@
-web: python server/manage.py runserver 0.0.0.0:$PORT
+web: gunicorn --workers=2 --bind 0.0.0.0:\$PORT --pythonpath server server.wsgi:application

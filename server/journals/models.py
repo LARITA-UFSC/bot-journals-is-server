@@ -40,9 +40,14 @@ class Documents(models.Model):
         default=DEFAULT,
     )
 
+    @property
+    def journal_display(self):
+        return self.get_journal_display()
+
     class Meta:
         # managed = False
         db_table = 'documents'
+        ordering = ['title']
 
     def __str__(self):
         return self.title

@@ -13,9 +13,33 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+from journals.models import Documents
+from rest_framework import routers, serializers, viewsets
+from django_filters import FilterSet
+
+class DocumentsFilter(FilterSet):
+    class Meta:
+        model = Documents
+        fields = {'title': ['icontains']}
+
+
+class DocumentsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Documents
+        fields = ('title', 'summary', 'url_pdf', 'journal_display')
+
+
+class DocumentsViewSet(viewsets.ModelViewSet):
+    queryset = Documents.objects.all()
+    serializer_class = DocumentsSerializer
+    filter_class = DocumentsFilter
+
+router = routers.DefaultRouter()
+router.register(r'documents', DocumentsViewSet)
 
 urlpatterns = [
+    url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
 ]
