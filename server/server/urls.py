@@ -28,7 +28,7 @@ class DocumentsFilter(FilterSet):
 class DocumentsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Documents
-        fields = ('title', 'authors', 'keywords', 'summary', 'url_pdf')
+        fields = ('title', 'summary', 'url_pdf', 'journal_display')
 
 
 class DocumentsViewSet(viewsets.ModelViewSet):
