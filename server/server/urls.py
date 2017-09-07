@@ -15,29 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from journals.models import Documents
-from rest_framework import routers, serializers, viewsets
-from django_filters import FilterSet
-
+from rest_framework import routers
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
-
-class DocumentsFilter(FilterSet):
-    class Meta:
-        model = Documents
-        fields = {'title': ['icontains']}
-
-
-class DocumentsSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Documents
-        fields = ('title', 'summary', 'url_pdf', 'journal_display')
-
-
-class DocumentsViewSet(viewsets.ModelViewSet):
-    queryset = Documents.objects.all()
-    serializer_class = DocumentsSerializer
-    filter_class = DocumentsFilter
+from journals.views import DocumentsViewSet
 
 router = routers.DefaultRouter()
 router.register(r'documents', DocumentsViewSet)
