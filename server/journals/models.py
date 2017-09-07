@@ -10,6 +10,22 @@ from __future__ import unicode_literals
 from django.db import models
 
 
+class Author(models.Model):
+    name = models.CharField(max_length=150, blank=False, null=False)
+    
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+
+class AuthorMember(models.Model):
+    author = models.ForeignKey('Author')
+    documents = models.ForeignKey('Documents')
+    order = models.PositiveSmallIntegerField(null=False)
+
+
 class Documents(models.Model):
 
     DEFAULT = 0
@@ -35,6 +51,8 @@ class Documents(models.Model):
     url_view = models.CharField(max_length=2000, blank=True, null=True)
     url_pdf = models.CharField(max_length=2000, blank=True, null=True)
     
+    authors_v3 = models.ManyToManyField(Author, through='AuthorMember')
+
     trash = models.BooleanField(default=False)
 
     journal = models.PositiveSmallIntegerField(
