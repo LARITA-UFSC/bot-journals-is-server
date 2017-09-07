@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from journals.models import Documents, AuthorMember
-from journals.helpers import *
+from journals.models import Documents
+
 
 class DocumentsSerializer(serializers.HyperlinkedModelSerializer):
 
