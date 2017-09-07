@@ -34,6 +34,16 @@ class Documents(models.Model):
     PERSPECTIVAS_EM_CIENCIAS_DA_INFORMACAO = 3
     INFORMACAO_E_INFORMACAO = 4
     EM_QUESTAO = 5
+    AGORA = 6
+    INCID = 7
+    INTEXTO = 8
+    TENDENCIAS_DA_PESQUISA_BRASILEIRA_EM_CI = 9
+    RBBD = 10
+    BRAZILIAN_JOURNAL_OF_INFORMATION_SCIENCE = 11
+    PONTO_DE_ACESSO = 12
+    RIACI = 13
+    RACB = 14
+    BIBLIOS = 15
     
     JOURNALS_CHOICES = (
         (DEFAULT, 'Não Informado'),
@@ -42,6 +52,16 @@ class Documents(models.Model):
         (PERSPECTIVAS_EM_CIENCIAS_DA_INFORMACAO, 'Perspectivas em Ciência da Informação'),
         (INFORMACAO_E_INFORMACAO, 'Informação & Informação'),
         (EM_QUESTAO, 'Em Questão'),
+        (AGORA, 'Ágora'),
+        (INCID, 'InCID: Revista de Ciência da Informação e Documentação'),
+        (INTEXTO, 'Intexto'),
+        (TENDENCIAS_DA_PESQUISA_BRASILEIRA_EM_CI, 'Tendências da Pesquisa Brasileira em Ciência da Informação'),
+        (RBBD, 'Revista Brasileira de Biblioteconomia e Documentação'),
+        (BRAZILIAN_JOURNAL_OF_INFORMATION_SCIENCE, 'BRAZILIAN JOURNAL OF INFORMATION SCIENCE: RESEARCH TRENDS'),
+        (PONTO_DE_ACESSO, 'Ponto de Acesso'),
+        (RIACI, 'Revista Ibero-Americana de Ciência da Informação'),
+        (RACB, 'Revista ACB'),
+        (BIBLIOS, 'Biblios'),
     )
 
     title = models.CharField(max_length=2000, blank=True, null=True)
