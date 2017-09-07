@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Documents, Rawdata
+from .models import Documents, Rawdata, Author, AuthorMember
 
 
 @admin.register(Documents)
@@ -7,7 +7,7 @@ class DocumentsAdmin(admin.ModelAdmin):
     list_filter = ['journal']
     search_fields = ['title', 'keywords', 'summary']
     readonly_fields = ['title', 'authors', 'keywords',
-                       'summary', 'url_view', 'url_pdf', 'journal']
+                       'summary', 'url_view', 'url_pdf', 'journal', 'authors_v3']
 
     def has_delete_permission(self, request, obj=None):
         return False
@@ -22,5 +22,15 @@ class DocumentsAdmin(admin.ModelAdmin):
 
 
 @admin.register(Rawdata)
+class RawdataAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Author)
+class RawdataAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(AuthorMember)
 class RawdataAdmin(admin.ModelAdmin):
     pass

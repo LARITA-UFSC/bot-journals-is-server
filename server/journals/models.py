@@ -10,6 +10,22 @@ from __future__ import unicode_literals
 from django.db import models
 
 
+class Author(models.Model):
+    name = models.CharField(max_length=150, blank=False, null=False)
+    
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+
+class AuthorMember(models.Model):
+    author = models.ForeignKey('Author')
+    documents = models.ForeignKey('Documents')
+    order = models.PositiveSmallIntegerField(null=False)
+
+
 class Documents(models.Model):
 
     DEFAULT = 0
@@ -18,6 +34,16 @@ class Documents(models.Model):
     PERSPECTIVAS_EM_CIENCIAS_DA_INFORMACAO = 3
     INFORMACAO_E_INFORMACAO = 4
     EM_QUESTAO = 5
+    AGORA = 6
+    INCID = 7
+    INTEXTO = 8
+    TENDENCIAS_DA_PESQUISA_BRASILEIRA_EM_CI = 9
+    RBBD = 10
+    BRAZILIAN_JOURNAL_OF_INFORMATION_SCIENCE = 11
+    PONTO_DE_ACESSO = 12
+    RIACI = 13
+    RACB = 14
+    BIBLIOS = 15
     
     JOURNALS_CHOICES = (
         (DEFAULT, 'Não Informado'),
@@ -26,6 +52,16 @@ class Documents(models.Model):
         (PERSPECTIVAS_EM_CIENCIAS_DA_INFORMACAO, 'Perspectivas em Ciência da Informação'),
         (INFORMACAO_E_INFORMACAO, 'Informação & Informação'),
         (EM_QUESTAO, 'Em Questão'),
+        (AGORA, 'Ágora'),
+        (INCID, 'InCID: Revista de Ciência da Informação e Documentação'),
+        (INTEXTO, 'Intexto'),
+        (TENDENCIAS_DA_PESQUISA_BRASILEIRA_EM_CI, 'Tendências da Pesquisa Brasileira em Ciência da Informação'),
+        (RBBD, 'Revista Brasileira de Biblioteconomia e Documentação'),
+        (BRAZILIAN_JOURNAL_OF_INFORMATION_SCIENCE, 'BRAZILIAN JOURNAL OF INFORMATION SCIENCE: RESEARCH TRENDS'),
+        (PONTO_DE_ACESSO, 'Ponto de Acesso'),
+        (RIACI, 'Revista Ibero-Americana de Ciência da Informação'),
+        (RACB, 'Revista ACB'),
+        (BIBLIOS, 'Biblios'),
     )
 
     title = models.CharField(max_length=2000, blank=True, null=True)
@@ -35,6 +71,8 @@ class Documents(models.Model):
     url_view = models.CharField(max_length=2000, blank=True, null=True)
     url_pdf = models.CharField(max_length=2000, blank=True, null=True)
     
+    authors_v3 = models.ManyToManyField(Author, through='AuthorMember')
+
     trash = models.BooleanField(default=False)
 
     journal = models.PositiveSmallIntegerField(
