@@ -1,5 +1,1 @@
-server/staticfiles
-
-server/server/__pycache__/*.*
-server/journals/__pycache__/*.*
-server/journals/migrations/__pycache__/*.*
+__pycache__/
