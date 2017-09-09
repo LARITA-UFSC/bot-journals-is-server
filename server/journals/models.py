@@ -6,12 +6,18 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from __future__ import unicode_literals
-
 from django.db import models
 
 
+class Keyword(models.Model):
+    description = models.CharField(max_length=150, blank=False, null=False, unique=True)
+
+    def __str__(self):
+        return self.description
+
+
 class Author(models.Model):
-    name = models.CharField(max_length=150, blank=False, null=False)
+    name = models.CharField(max_length=150, blank=False, null=False, unique=True)
     
     class Meta:
         ordering = ['name']
@@ -24,6 +30,9 @@ class AuthorMember(models.Model):
     author = models.ForeignKey('Author')
     documents = models.ForeignKey('Documents')
     order = models.PositiveSmallIntegerField(null=False)
+
+    def __str__(self):
+        return f'{self.order} - {self.author} - {self.documents}'
 
 
 class Documents(models.Model):
@@ -71,7 +80,8 @@ class Documents(models.Model):
     url_view = models.CharField(max_length=2000, blank=True, null=True)
     url_pdf = models.CharField(max_length=2000, blank=True, null=True)
     
-    authors_v3 = models.ManyToManyField(Author, through='AuthorMember')
+    authors_v3 = models.ManyToManyField(Author, through='AuthorMember', default=None)
+    keywods_v1 = models.ManyToManyField(Keyword, default=None)
 
     trash = models.BooleanField(default=False)
 

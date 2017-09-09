@@ -9,7 +9,7 @@ class DocumentsFilter(FilterSet):
 
     def filter_search(self, queryset, name, value):
         query = Q(authors__icontains=value) | Q(title__icontains=value) | Q(keywords__icontains=value) | Q(summary__icontains=value)
-        return queryset.filter(query).filter(trash=False)
+        return queryset.filter(query)
 
     class Meta:
         model = Documents
