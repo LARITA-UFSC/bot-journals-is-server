@@ -77,7 +77,8 @@ class Documents(models.Model):
     authors = models.CharField(max_length=2000, blank=True, null=True)
     keywords = models.CharField(max_length=2000, blank=True, null=True)
     summary = models.TextField(blank=True, null=True)
-    url_view = models.CharField(max_length=2000, blank=True, null=True)
+    
+    url_view = models.CharField(max_length=2000, blank=True, null=True, unique=True)
     url_pdf = models.CharField(max_length=2000, blank=True, null=True)
     
     authors_v3 = models.ManyToManyField(Author, through='AuthorMember', default=None)
