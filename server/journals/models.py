@@ -53,6 +53,11 @@ class Documents(models.Model):
     RIACI = 13
     RACB = 14
     BIBLIOS = 15
+    CIENCIA_DA_INFORMACAO_EM_REVISTA = 16
+    REVISTA_CONHECIMENTO_EM_ACAO = 17
+    FOLHA_DE_ROSTO = 18 
+    MULTIPLOS_OLHARES_EM_CIENCIAS_DA_INFORMACAO = 19
+    REVISTA_ELETRONICA_DE_COMUNICACAO_INFORMACAO_INIVACAO_EM_SAUDE = 20
     
     JOURNALS_CHOICES = (
         (DEFAULT, 'Não Informado'),
@@ -71,6 +76,11 @@ class Documents(models.Model):
         (RIACI, 'Revista Ibero-Americana de Ciência da Informação'),
         (RACB, 'Revista ACB'),
         (BIBLIOS, 'Biblios'),
+        (CIENCIA_DA_INFORMACAO_EM_REVISTA, 'Ciência da Informação em Revista'),
+        (REVISTA_CONHECIMENTO_EM_ACAO, 'Revista Conhecimento em Ação'),
+        (FOLHA_DE_ROSTO, 'Folha de Rosto'),
+        (MULTIPLOS_OLHARES_EM_CIENCIAS_DA_INFORMACAO, 'Múltiplos Olhares em Ciência da Informação'),
+        (REVISTA_ELETRONICA_DE_COMUNICACAO_INFORMACAO_INIVACAO_EM_SAUDE, 'Revista Eletrônica de Comunicação, Informação & Inovação em Saúde'),
     )
 
     title = models.CharField(max_length=2000, blank=True, null=True)
