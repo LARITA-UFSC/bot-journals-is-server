@@ -5,11 +5,11 @@ WHITE="\033[1;37m"
 NO_COLOUR="\033[0m"
 
 run:
-	echo ${GREEN}Running App${NO_COLOUR}
+	echo ${GREEN}Running app${NO_COLOUR}
 	DEBUG=True DATABASE_URL=postgres://infinite:infinite@infinite.cehmr8mdcpeo.us-east-2.rds.amazonaws.com:5432/infinite foreman start
 
 lint:
-	echo ${GREEN}Running Linter${NO_COLOUR}
+	echo ${GREEN}Running linter${NO_COLOUR}
 	flake8 .
 
 fix:
@@ -17,5 +17,7 @@ fix:
 	find . -name '*.py'|grep -v migrations|xargs autoflake --in-place --remove-all-unused-imports --remove-unused-variables
 	echo ${GREEN}Fixing pep8 issues${NO_COLOUR}
 	autopep8 --in-place --recursive --max-line-length=100 --exclude="*/migrations/*" .
+	echo ${YELLOW}Linter statistics${NO_COLOUR}
+	flake8 --statistics --count -qq
 
 .PHONY: run
