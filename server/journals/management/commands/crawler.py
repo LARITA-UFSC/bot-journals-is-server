@@ -25,4 +25,4 @@ class Command(BaseCommand):
         for doc in id_documents:
             fields = crawler.run(doc)
             if fields:
-                self.__save_db(fields, id_journal)        
+                self.__save_db(fields, id_journal)

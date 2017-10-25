@@ -1,10 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
-import re
 import json
 
 from journals.helpers import Colors
 from journals.models import Documents, Rawdata
+
 
 class OpenJournalSystems():
 
@@ -20,7 +20,8 @@ class OpenJournalSystems():
     def extract(self, url):
 
         def filter_field(id, description, pkp):
-            mt = [d['document'] for d in metadata_document if d['id'] in id and d['description'] in description and d['pkp'] in pkp]
+            mt = [d['document'] for d in metadata_document if d['id']
+                  in id and d['description'] in description and d['pkp'] in pkp]
             if len(mt) == 0:
                 return ['']
             return mt
@@ -61,7 +62,7 @@ class OpenJournalSystems():
         url_view = filter_field('10.', 'Identificador',
                                 'Identificador de Recurso Uniforme (URI)')[0]
         url_pdf = ''
-        
+
         if url_view != '':
             soup_url_pdf = self.__factory_soup(url_view)
             div_pdf = soup_url_pdf.find('div', id='articleFullText')
@@ -114,13 +115,13 @@ class CoreCrawler():
             'url_pdf': fields['url_pdf'],
             'journal': self.id_journal,
         }
-     
+
         document, created = Documents.objects.get_or_create(
             **doc_data,
-            defaults={'url_view': doc_data['url_view'] },
+            defaults={'url_view': doc_data['url_view']},
         )
 
-        if created: 
+        if created:
             raw_data = {
                 'raw_data': json.dumps(fields['raw_data']),
                 'html_doc': fields['html_doc'],
@@ -128,6 +129,7 @@ class CoreCrawler():
             }
             Rawdata.objects.create(**raw_data,)
 
-            print(Colors.GREEN, 'Documento ', document.id, ' processado com sucesso', Colors.NO_COLOUR)
+            print(Colors.GREEN, 'Documento ', document.id,
+                  ' processado com sucesso', Colors.NO_COLOUR)
         else:
             print(Colors.GREEN, 'Documento ', document.id, ' já foi processado', Colors.NO_COLOUR)
