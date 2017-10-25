@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from journals.models import Documents
-from journals.helpers import *
+from journals.helpers import to_list, replace_new_line, trim_all, parenthesis_to_bracket
 
 
 class DocumentsSerializer(serializers.HyperlinkedModelSerializer):
