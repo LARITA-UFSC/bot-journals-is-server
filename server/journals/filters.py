@@ -8,7 +8,8 @@ class DocumentsFilter(FilterSet):
     search = CharFilter(name='search', method='filter_search')
 
     def filter_search(self, queryset, name, value):
-        query = Q(authors__icontains=value) | Q(title__icontains=value) | Q(keywords__icontains=value) | Q(summary__icontains=value)
+        query = Q(authors__icontains=value) | Q(title__icontains=value) | Q(
+            keywords__icontains=value) | Q(summary__icontains=value)
         return queryset.filter(query)
 
     class Meta:
