@@ -17,3 +17,11 @@ def to_list(text):
 
 def get_value_list(value, index):
     return (value or [None])[index]
+
+
+class Colors:
+    GREEN='\033[1;32m'
+    RED='\033[1;31m'
+    YELLOW='\033[1;33m'
+    WHITE='\033[1;37m'
+    NO_COLOUR='\033[0m'
