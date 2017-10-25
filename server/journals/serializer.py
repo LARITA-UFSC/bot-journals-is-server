@@ -10,7 +10,7 @@ class DocumentsSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_authors(self, obj):
         authors = to_list(replace_new_line(trim_all(parenthesis_to_bracket(obj.authors))))
-        return ', '.join( [a.split(';')[0] for a in authors])
+        return ', '.join([a.split(';')[0] for a in authors])
 
     class Meta:
         model = Documents

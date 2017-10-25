@@ -18,7 +18,7 @@ class Keyword(models.Model):
 
 class Author(models.Model):
     name = models.CharField(max_length=150, blank=False, null=False, unique=True)
-    
+
     class Meta:
         ordering = ['name']
 
@@ -55,10 +55,10 @@ class Documents(models.Model):
     BIBLIOS = 15
     CIENCIA_DA_INFORMACAO_EM_REVISTA = 16
     REVISTA_CONHECIMENTO_EM_ACAO = 17
-    FOLHA_DE_ROSTO = 18 
+    FOLHA_DE_ROSTO = 18
     MULTIPLOS_OLHARES_EM_CIENCIAS_DA_INFORMACAO = 19
     REVISTA_ELETRONICA_DE_COMUNICACAO_INFORMACAO_INIVACAO_EM_SAUDE = 20
-    
+
     JOURNALS_CHOICES = (
         (DEFAULT, 'Não Informado'),
         (INFORMACAO_E_SOCIEDADE, 'Informação & Sociedade'),
@@ -69,9 +69,11 @@ class Documents(models.Model):
         (AGORA, 'Ágora'),
         (INCID, 'InCID: Revista de Ciência da Informação e Documentação'),
         (INTEXTO, 'Intexto'),
-        (TENDENCIAS_DA_PESQUISA_BRASILEIRA_EM_CI, 'Tendências da Pesquisa Brasileira em Ciência da Informação'),
+        (TENDENCIAS_DA_PESQUISA_BRASILEIRA_EM_CI,
+         'Tendências da Pesquisa Brasileira em Ciência da Informação'),
         (RBBD, 'Revista Brasileira de Biblioteconomia e Documentação'),
-        (BRAZILIAN_JOURNAL_OF_INFORMATION_SCIENCE, 'BRAZILIAN JOURNAL OF INFORMATION SCIENCE: RESEARCH TRENDS'),
+        (BRAZILIAN_JOURNAL_OF_INFORMATION_SCIENCE,
+         'BRAZILIAN JOURNAL OF INFORMATION SCIENCE: RESEARCH TRENDS'),
         (PONTO_DE_ACESSO, 'Ponto de Acesso'),
         (RIACI, 'Revista Ibero-Americana de Ciência da Informação'),
         (RACB, 'Revista ACB'),
@@ -80,17 +82,18 @@ class Documents(models.Model):
         (REVISTA_CONHECIMENTO_EM_ACAO, 'Revista Conhecimento em Ação'),
         (FOLHA_DE_ROSTO, 'Folha de Rosto'),
         (MULTIPLOS_OLHARES_EM_CIENCIAS_DA_INFORMACAO, 'Múltiplos Olhares em Ciência da Informação'),
-        (REVISTA_ELETRONICA_DE_COMUNICACAO_INFORMACAO_INIVACAO_EM_SAUDE, 'Revista Eletrônica de Comunicação, Informação & Inovação em Saúde'),
+        (REVISTA_ELETRONICA_DE_COMUNICACAO_INFORMACAO_INIVACAO_EM_SAUDE,
+         'Revista Eletrônica de Comunicação, Informação & Inovação em Saúde'),
     )
 
     title = models.CharField(max_length=2000, blank=True, null=True)
     authors = models.CharField(max_length=2000, blank=True, null=True)
     keywords = models.CharField(max_length=2000, blank=True, null=True)
     summary = models.TextField(blank=True, null=True)
-    
+
     url_view = models.CharField(max_length=2000, blank=True, null=True, unique=True)
     url_pdf = models.CharField(max_length=2000, blank=True, null=True)
-    
+
     authors_v3 = models.ManyToManyField(Author, through='AuthorMember', default=None)
     keywods_v1 = models.ManyToManyField(Keyword, default=None)
 

@@ -19,7 +19,7 @@ class Command(BaseCommand):
         return text.count('.') > 0
 
     def __extract_keywords(self, raw_keywords, comma, semicolon, period):
-        
+
         keywords = self.__remove_end_stop(raw_keywords)
 
         sep = None
@@ -42,24 +42,24 @@ class Command(BaseCommand):
         parser.add_argument('--period', action='store_true')
 
     def handle(self, *args, **options):
-        
+
         save = options['save']
 
         comma = options['comma']
         semicolon = options['semicolon']
         period = options['period']
 
-        documents=Documents.objects.filter(keywods_v1__isnull=True).filter(trash=False)
+        documents = Documents.objects.filter(keywods_v1__isnull=True).filter(trash=False)
         for document in documents:
 
-            descriptions=self.__extract_keywords(document.keywords, comma, semicolon, period)
-            
+            descriptions = self.__extract_keywords(document.keywords, comma, semicolon, period)
+
             if descriptions is None:
                 continue
 
             if save:
                 for description in descriptions:
-                    keyword, _=Keyword.objects.get_or_create(
+                    keyword, _ = Keyword.objects.get_or_create(
                         description=description, defaults={"description": description})
                     description.keywods_v1.add(keyword)
 
