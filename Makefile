@@ -4,9 +4,17 @@ YELLOW="\033[1;33m"
 WHITE="\033[1;37m"
 NO_COLOUR="\033[0m"
 
+
 run:
 	echo ${GREEN}Running app${NO_COLOUR}
-	DEBUG=True DATABASE_URL=postgres://infinite:infinite@infinite.cehmr8mdcpeo.us-east-2.rds.amazonaws.com:5432/infinite foreman start
+	foreman start
+
+crawler:
+	# make crawler 
+	#    url=http://periodicos.ufca.edu.br/ojs/index.php/folhaderosto/ 
+	#    id-inicial=1 id-final=3 id-journal=9
+	echo ${GREEN}Running crawler${NO_COLOUR}
+	python server/manage.py crawler --url=$(url) --id-inicial=$(id-inicial) --id-final=$(id-final) --id-journal=$(id-journal)
 
 lint:
 	echo ${GREEN}Running linter${NO_COLOUR}

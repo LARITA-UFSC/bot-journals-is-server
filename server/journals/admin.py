@@ -27,10 +27,10 @@ class RawdataAdmin(admin.ModelAdmin):
 
 
 @admin.register(Author)
-class RawdataAdmin(admin.ModelAdmin):
+class AuthorAdmin(admin.ModelAdmin):
     pass
 
 
 @admin.register(AuthorMember)
-class RawdataAdmin(admin.ModelAdmin):
+class AuthorMemberAdmin(admin.ModelAdmin):
     pass
