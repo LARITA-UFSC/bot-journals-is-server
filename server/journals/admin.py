@@ -1,13 +1,13 @@
 from django.contrib import admin
-from .models import Documents, Rawdata, Author, AuthorMember
+from .models import Documents, Rawdata, Author, AuthorMember, Journal
 
 
 @admin.register(Documents)
 class DocumentsAdmin(admin.ModelAdmin):
-    list_filter = ['journal']
-    search_fields = ['title', 'keywords', 'summary']
-    readonly_fields = ['title', 'authors', 'keywords',
-                       'summary', 'url_view', 'url_pdf', 'journal', 'authors_v3']
+    list_filter = ['journal__description']
+    search_fields = ['title', 'keywords', 'summary', 'journal__description']
+    readonly_fields = ['title', 'authors', 'keywords', 'journal',
+                       'summary', 'url_view', 'url_pdf', 'authors_v3']
 
     def has_delete_permission(self, request, obj=None):
         return False
@@ -33,4 +33,8 @@ class AuthorAdmin(admin.ModelAdmin):
 
 @admin.register(AuthorMember)
 class AuthorMemberAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Journal)
+class JournalAdmin(admin.ModelAdmin):
     pass

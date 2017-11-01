@@ -9,6 +9,13 @@ from __future__ import unicode_literals
 from django.db import models
 
 
+class Journal(models.Model):
+
+    description = models.CharField(max_length=80, blank=False, null=False, unique=True)
+    
+    def __str__(self):
+        return self.description
+
 class Keyword(models.Model):
     description = models.CharField(max_length=150, blank=False, null=False, unique=True)
 
@@ -99,10 +106,12 @@ class Documents(models.Model):
 
     trash = models.BooleanField(default=False)
 
-    journal = models.PositiveSmallIntegerField(
-        choices=JOURNALS_CHOICES,
-        default=DEFAULT,
-    )
+    journal = models.ForeignKey(Journal, null=False)
+
+    # journal = models.PositiveSmallIntegerField(
+    #     choices=JOURNALS_CHOICES,
+    #     default=DEFAULT,
+    # )
 
     @property
     def journal_display(self):
@@ -114,8 +123,7 @@ class Documents(models.Model):
         ordering = ['title']
 
     def __str__(self):
-        return self.title
-
+        return f'{self.title} [{self.journal.description}]'
 
 class Rawdata(models.Model):
     raw_data = models.TextField(blank=True, null=True)
