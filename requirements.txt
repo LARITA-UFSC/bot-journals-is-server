@@ -9,3 +9,4 @@ django-sql-explorer==1.1.1
 whitenoise==3.3.0
 beautifulsoup4==4.6.0
 requests==2.18.1
+python-dotenv==0.7.1
