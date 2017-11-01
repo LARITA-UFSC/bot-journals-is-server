@@ -35,6 +35,7 @@ class AuthorAdmin(admin.ModelAdmin):
 class AuthorMemberAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(Journal)
 class JournalAdmin(admin.ModelAdmin):
     pass
