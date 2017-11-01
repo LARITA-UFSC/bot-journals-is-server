@@ -28,4 +28,20 @@ fix:
 	echo ${YELLOW}Linter statistics${NO_COLOUR}
 	flake8 --statistics --count -qq
 
+heroku-dump-db:
+
+	#
+	# pg_restore --verbose --clean --no-acl --no-owner -h localhost -U myuser -d mydb latest.dump
+	#
+
+	echo ${GREEN}Downloading dump database${NO_COLOUR}
+	heroku pg:backups:capture --app infinite-meadow-72957
+	heroku pg:backups:download --app infinite-meadow-72957
+	mv latest.dump data/
+
+migrate:
+	echo ${GREEN}Running migrations${NO_COLOUR}
+	python server/manage.py makemigrations
+	python server/manage.py migrate
+
 .PHONY: run
